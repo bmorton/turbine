@@ -46,5 +46,3 @@ pkg
 
 # For rubinius:
 #*.rbc
-
-example/*
