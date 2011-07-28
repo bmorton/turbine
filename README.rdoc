@@ -2,6 +2,14 @@
 
 Turbine is a MySQL binary log parser.
 
+== Requirements
+
+For this gem to work for you, you need MySQL with the binary log enabled.  It also assumes that 'mysqlbinlog' is installed and in your path.
+
+== Example
+
+For an example of how to use Turbine, check out examples/watch.rb
+
 == Contributing to turbine
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
