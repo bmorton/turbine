@@ -10,7 +10,7 @@ For this gem to work for you, you need MySQL with the binary log enabled.  It al
 
 For an example of how to use Turbine, check out examples/watch.rb
 
-== Contributing to turbine
+== Contributing to Turbine
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
