@@ -1,6 +1,6 @@
-= turbine
+= Turbine
 
-Description goes here.
+Turbine is a MySQL binary log parser.
 
 == Contributing to turbine
  
