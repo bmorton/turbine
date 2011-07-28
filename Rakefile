@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "turbine"
   gem.homepage = "http://github.com/bmorton/turbine"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{ A MySQL binary log parser. }
+  gem.description = %Q{ This gem will parse a MySQL binary log file and will help with tracking offsets and creating incremental backups or updates. }
   gem.email = "bmorton@sdreader.com"
   gem.authors = ["Brian Morton"]
   # dependencies defined in Gemfile
