@@ -15,18 +15,18 @@ module Turbine
       @options = default_options.merge(options)
       
       @options[:mysqlbinlog] = `which mysqlbinlog`.strip
-      @statements = Array.new
     end
     
     def reload!
-      command = "#{@options[:mysqlbinlog]} #{@options[:file]} -o #{@options[:offset]}"
+      command = "#{@options[:mysqlbinlog]} --offset=#{@options[:offset]}"
       unless @options[:database].empty?
-        command << " --database #{@options[:database]}"
+        command << " --database=#{@options[:database]}"
       end
+      command << " #{@options[:file]}"
       
       status = POpen4.popen4(command) do |stdout, stderr, stdin, pid|
         @error = stderr.read.strip
-        @contents = stdout.read.strip
+        @contents = stdout.read.strip.gsub('/*!\C utf8 *//*!*/;', 'SET names utf8/*!*/;')
       end
       
       unless status.exitstatus == 0
@@ -37,7 +37,8 @@ module Turbine
     def parse!
       self.reload!
       array = @contents.split("\n# at ")
-
+      
+      @statements = Array.new
       array.each do |each|
         # Get the '# at 420' key (first line/comment of statement)
         key = each.lines.to_a[0].strip
@@ -59,6 +60,10 @@ module Turbine
         statement[:query] = query
         @statements << statement
       end
+    end
+    
+    def offset=(new_offset)
+      @options[:offset] = new_offset
     end
     
     def current_offset
